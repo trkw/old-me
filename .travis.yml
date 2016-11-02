@@ -24,6 +24,13 @@ before_script:
   - sleep 3
   - npm start &
   - sleep 5
+  
+after_success:
+   - cd dist
+   - git add -A
+   - git commit -m 'Update'
++  - '[ "$TRAVIS_BRANCH" == "master" ] && [ $GH_TOKEN ] && git push --quiet https://$GH_TOKEN@github.com/trkw.github.io.git master 2> /dev/null'
+
 script:
   - npm test
   - npm run e2e
