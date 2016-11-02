@@ -45,11 +45,6 @@ build:
           npm run build:prod
 deploy:
   steps:
-    - script:
-        name: build
-        code: |
-          npm run build:prod
-
     - lukevivier/gh-pages:
       token: $GITHUB_TOKEN
       domain: trkw.me
