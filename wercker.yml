@@ -45,11 +45,6 @@ build:
           npm test
 deploy:
   steps:
-    - script:
-        name: build
-        code: |
-          npm run build
-
     - lukevivier/gh-pages:
       token: $GITHUB_TOKEN
       domain: trkw.me
