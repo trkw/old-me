@@ -1,0 +1,20 @@
+:root {
+  --nav-item-padding: 0.5rem;
+}
+
+.imagewrap {
+  background: #b9c8c6;
+  transition-property: opacity;
+  transition-duration: 0.7s;
+  max-width: 100px;
+  display: inline-block;
+  border: 2px solid white;
+  box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.4);
+  margin: 0 auto;
+  width: auto;
+  margin-bottom: 0.5em;
+  border-radius: 50%;
+  z-index: 1;
+  overflow: hidden;
+  line-height: 0;
+}

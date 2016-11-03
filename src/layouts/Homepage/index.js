@@ -1,8 +1,9 @@
 import React, { PropTypes } from "react"
 import enhanceCollection from "phenomic/lib/enhance-collection"
 
-import Page from "../Page"
+import TopPage from "../TopPage"
 import PagesList from "../../components/PagesList"
+import ProfileImage from "../../components/ProfileImage"
 
 const numberOfLatestPosts = 6
 
@@ -15,10 +16,11 @@ const Homepage = (props, { collection }) => {
   .slice(0, numberOfLatestPosts)
 
   return (
-    <Page { ...props }>
+    <TopPage { ...props }>
+      <ProfileImage />
       <h2>{ "Latest Posts" }</h2>
       <PagesList pages={ latestPosts } />
-    </Page>
+    </TopPage>
   )
 }
 
