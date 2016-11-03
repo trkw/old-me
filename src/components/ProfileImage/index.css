@@ -3,18 +3,14 @@
 }
 
 .imagewrap {
-  background: #b9c8c6;
-  transition-property: opacity;
-  transition-duration: 0.7s;
-  max-width: 100px;
-  display: inline-block;
-  border: 2px solid white;
-  box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.4);
-  margin: 0 auto;
-  width: auto;
-  margin-bottom: 0.5em;
-  border-radius: 50%;
-  z-index: 1;
   overflow: hidden;
-  line-height: 0;
+  background-image: -webkit-linear-gradient(top left, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0) 25%), url(https://avatars1.githubusercontent.com/u/2557813);
+  background-image: gradient(top left, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0) 25%), url(https://avatars1.githubusercontent.com/u/2557813);
+  background-size: auto, 100%;
+  border: 2px solid white;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.4) 0 2px 4px, inset rgba(0, 0, 0, 0.4) 0 3px 2px;
+  height: 100px;
+  margin: 0 auto;
+  width: 100px;
 }
