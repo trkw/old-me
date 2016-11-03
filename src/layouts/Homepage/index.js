@@ -4,6 +4,7 @@ import enhanceCollection from "phenomic/lib/enhance-collection"
 import TopPage from "../TopPage"
 import PagesList from "../../components/PagesList"
 import ProfileImage from "../../components/ProfileImage"
+import SkillSet from "../../components/SkillSet"
 
 const numberOfLatestPosts = 6
 
@@ -18,6 +19,7 @@ const Homepage = (props, { collection }) => {
   return (
     <TopPage { ...props }>
       <ProfileImage />
+      <SkillSet />
       <h2>{ "Latest Posts" }</h2>
       <PagesList pages={ latestPosts } />
     </TopPage>

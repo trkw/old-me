@@ -1,0 +1,58 @@
+.skillSet {
+  margin: 0;
+}
+
+.skillList {
+  width: 100%;
+  display: flex;
+}
+
+.skillItem {
+  width: 50%;
+  float: left;
+  list-style-type: none;
+}
+
+.skillItem:nth-child(even) {
+  margin-bottom: 1rem;
+}
+
+progress[value] {
+  appearance: none;
+  background-color: #1a1a1a;
+  height: 25px;
+  padding: 5px;
+  width: 95%;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;
+  position: relative;
+  margin: 0 0 1rem;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #1a1a1a;
+}
+
+progress[value]::-webkit-progress-value {
+  position: relative;
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+  border-radius: 3px;
+  animation: animate-stripes 5s linear infinite;
+}
+
+p[data-value] {
+  position: relative;
+}
+
+p[data-value]::after {
+  content: attr(data-value) "%";
+  position: absolute;
+  right: 0;
+}
+
+.html5::-webkit-progress-value,
+.python::-webkit-progress-value {
+  background-size: 30px 30px;
+  background-color: #aaa;
+  animation: animate-glow 1s ease-out infinite;
+}
