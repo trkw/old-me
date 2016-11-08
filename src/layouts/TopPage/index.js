@@ -39,6 +39,15 @@ const TopPage = (
     { name: "twitter:creator", content: `@${ pkg.twitter }` },
     { name: "twitter:description", content: head.description },
     { name: "description", content: head.description },
+    { name: "theme-color", content: "#ffffff"},
+  ]
+
+  const link = [
+    { rel: "apple-touch-icon", size: "180x180", href: "/assets/favicon/apple-icon.png" },
+    { rel: "icon", size: "32x32", type: "image/png", href: "/assets/favicon/favicon-32x32.png" },
+    { rel: "icon", size: "16x16", type: "image/png", href: "/assets/favicon/favicon-16x16.png" },
+    { rel: "manifest", href: "/assets/favicon/manifest.json" },
+    { rel: "mask-icon", href: "/assets/favicon/safari-pinned-tab.svg", color: "#5bbad5" },
   ]
 
   return (
@@ -46,6 +55,7 @@ const TopPage = (
       <Helmet
         title={ metaTitle }
         meta={ meta }
+        link={ link }
       />
       { header }
       <BodyContainer>{ body }</BodyContainer>
