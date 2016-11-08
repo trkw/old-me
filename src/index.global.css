@@ -73,6 +73,10 @@ body {
   }
 }
 
+.phenomic-BodyContainer {
+  word-break: break-all;
+}
+
 /* minimal styling, prefer removing this and use local styles */
 a {
   line-height: 1;
