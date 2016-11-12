@@ -3,10 +3,13 @@ import Helmet from "react-helmet"
 import invariant from "invariant"
 import { BodyContainer, joinUri } from "phenomic"
 
+import Loading from "../../components/Loading"
+
 import styles from "./index.css"
 
 const Page = (
   {
+    isLoading,
     __filename,
     __url,
     head,
@@ -38,15 +41,7 @@ const Page = (
     { name: "twitter:title", content: metaTitle },
     { name: "twitter:creator", content: `@${ pkg.twitter }` },
     { name: "twitter:description", content: head.description },
-    { name: "theme-color", content: "#ffffff"},
-  ]
-
-  const link = [
-    { rel: "apple-touch-icon", size: "180x180", href: "/assets/favicon/apple-icon.png" },
-    { rel: "icon", size: "32x32", type: "image/png", href: "/assets/favicon/favicon-32x32.png" },
-    { rel: "icon", size: "16x16", type: "image/png", href: "/assets/favicon/favicon-16x16.png" },
-    { rel: "manifest", href: "/assets/favicon/manifest.json" },
-    { rel: "mask-icon", href: "/assets/favicon/safari-pinned-tab.svg", color: "#5bbad5" },
+    { name: "description", content: head.description },
   ]
 
   return (
@@ -54,14 +49,17 @@ const Page = (
       <Helmet
         title={ metaTitle }
         meta={ meta }
-        link={ link }
       />
       {
         head.title &&
         <h1 className={ styles.heading }>{ head.title }</h1>
       }
       { header }
-      <BodyContainer>{ body }</BodyContainer>
+      {
+        isLoading
+        ? <Loading />
+        : <BodyContainer>{ body }</BodyContainer>
+      }
       { children }
       { footer }
     </div>
@@ -70,10 +68,11 @@ const Page = (
 
 Page.propTypes = {
   children: PropTypes.node,
-  __filename: PropTypes.string.isRequired,
-  __url: PropTypes.string.isRequired,
+  isLoading: PropTypes.bool,
+  __filename: PropTypes.string,
+  __url: PropTypes.string,
   head: PropTypes.object.isRequired,
-  body: PropTypes.string.isRequired,
+  body: PropTypes.string,
   header: PropTypes.element,
   footer: PropTypes.element,
 }
