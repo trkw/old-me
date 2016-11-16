@@ -3,7 +3,7 @@
 # If you want Nodesource's container you would reference nodesource/node
 # Read more about containers on our dev center
 # http://devcenter.wercker.com/docs/containers/index.html
-box: node:6
+box: node:7
 # This is the build pipeline. Pipelines are the core of wercker
 # Read more about pipelines on our dev center
 # http://devcenter.wercker.com/docs/pipelines/index.html
@@ -23,19 +23,9 @@ build:
   # http://devcenter.wercker.com/docs/steps/index.html
   steps:
     - script:
-      name: install yarn
+      name: install
       code: |
-        npm install -g yarn
-
-    - script:
-      name: set yarn cache
-      code: |
-        export YARN_CACHE=$WERCKER_CACHE_DIR/yarn
-
-    - script:
-      name: install dependencies
-      code: |
-        HOME=$YARN_CACHE yarn
+        npm install
 
     # A custom script step, name value is used in the UI
     # and the code value contains the command that get executed
