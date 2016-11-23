@@ -3,7 +3,7 @@
 # If you want Nodesource's container you would reference nodesource/node
 # Read more about containers on our dev center
 # http://devcenter.wercker.com/docs/containers/index.html
-box: node:7
+box: node:6
 # This is the build pipeline. Pipelines are the core of wercker
 # Read more about pipelines on our dev center
 # http://devcenter.wercker.com/docs/pipelines/index.html
@@ -11,11 +11,6 @@ box: node:7
 # You can also use services such as databases. Read more on our dev center:
 # http://devcenter.wercker.com/docs/services/index.html
 # services:
-    # - postgres
-    # http://devcenter.wercker.com/docs/services/postgresql.html
-
-    # - mongodb
-    # http://devcenter.wercker.com/docs/services/mongodb.html
 build:
   # The steps that will be executed on build
   # Steps make up the actions in your pipeline
@@ -30,9 +25,9 @@ build:
     # A custom script step, name value is used in the UI
     # and the code value contains the command that get executed
     - script:
-        name: test
+        name: build
         code: |
-          npm test
+          npm run build
 deploy:
   steps:
     - lukevivier/gh-pages:
