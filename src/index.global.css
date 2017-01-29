@@ -1,5 +1,3 @@
-@import "https://fonts.googleapis.com/earlyaccess/mplus1p.css";
-
 /* Using global sytles is not recommended, prefer local styles via CSS Modules */
 
 /*
@@ -38,16 +36,16 @@ body {
   line-height: 1.5rem;
 
   /* system font https://medium.com/designing-medium/system-shock-6b1dc6d6596f */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', '游ゴシック  Medium', meiryo, sans-serif;
 }
 
 /*
  * .phenomic-HeadingAnchor
  *
  * anchors for markdown headings, generated via markdown renderer, so require
- * global styling
  */
 @custom-selector :--headings h1, h2, h3, h4, h5, h6;
+ * global styling
 
 :--headings {
   position: relative;
