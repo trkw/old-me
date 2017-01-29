@@ -1,19 +1,19 @@
-# [Phenomic](https://github.com/MoOx/phenomic) phenomic-theme-base
+# trkw.me
 
 ## Install dependencies
 
 ```sh
-npm install
+yarn
 ```
 
 ## Run development server
 
 ```sh
-npm start
+yarn start
 ```
 
 ## Build for production
 
 ```sh
-npm run build
+yarn build
 ```
