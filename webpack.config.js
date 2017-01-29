@@ -5,28 +5,22 @@ import ExtractTextPlugin from "extract-text-webpack-plugin"
 import { phenomicLoader } from "phenomic"
 import PhenomicLoaderFeedWebpackPlugin
   from "phenomic/lib/loader-feed-webpack-plugin"
+import PhenomicLoaderSitemapWebpackPlugin
+  from "phenomic/lib/loader-sitemap-webpack-plugin"
 
 import pkg from "./package.json"
 
 export default (config = {}) => {
-  const postcssPlugins = () => [
-    require("stylelint")(),
-    require("postcss-cssnext")({
-      browsers: "last 2 versions",
-      features: {
-        customProperties: {
-          variables: {
-            mainColor: "#111",
-            mainColorContrasted: "#eee",
-          },
-        },
-      },
-    }),
-    require("postcss-reporter")(),
-    ...!config.production ? [
-      require("postcss-browser-reporter")(),
-    ] : [],
-  ]
+
+  // hot loading for postcss config
+  // until this is officially supported
+  // https://github.com/postcss/postcss-loader/issues/66
+  const postcssPluginFile = require.resolve("./postcss.config.js")
+  const postcssPlugins = (webpackInstance) => {
+    webpackInstance.addDependency(postcssPluginFile)
+    delete require.cache[postcssPluginFile]
+    return require(postcssPluginFile)(config)
+  }
 
   return {
     ...config.dev && {
@@ -260,6 +254,10 @@ export default (config = {}) => {
             },
           },
         },
+      }),
+
+      new PhenomicLoaderSitemapWebpackPlugin({
+        site_url: pkg.homepage,
       }),
 
       // webpack 1

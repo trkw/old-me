@@ -1,0 +1,46 @@
+language: node_js
+
+node_js:
+  - '6'
+
+# fail asap when there is a failure
+matrix:
+  fast_finish: true
+
+# cache node modules
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+script:
+  - npm run build
+
+env:
+  - CXX=g++-4.8
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+
+after_success: |
+  if [ -n "$GITHUB_API_KEY" ]; then
+    if ([ "$TRAVIS_BRANCH" == "master" ] || [ ! -z "$TRAVIS_TAG" ]) &&
+      [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+        echo "Deploying"
+        cd "$TRAVIS_BUILD_DIR"
+        cd dist
+        git init
+        git add .
+        git -c user.name=$GITHUB_NAME -c user.email=$GITHUB_EMAIL commit -m "Auto Deployment"
+        git push -f -q https://$GITHUB_NAME:$GITHUB_API_KEY@github.com/$GITHUB_NAME/$GITHUB_NAME.github.io master
+        cd "$TRAVIS_BUILD_DIR"
+      else
+        echo "Not Deploying"
+      fi
+  fi
+env:
+  global:
+    secure: "os262JOxGw2qxavyCh9o2Hn5r5BpoFRkJTIwPVwhj+UzLgADzuoC3WXggJhHc0GRTBGCejGIYV2X9Hij5pL0t3Z1G5Cf7h77rbPcLNj9t3T6MlKXvI5/Hioah4SQmrva9rpstJzDUCtwwwawPaSchdIsdVYpzoScFRMmL96CGhNdnetZOpki7t7j1M2HyvuqXQ6OFKhyN8D0z4vlxNW0zBBuezm51XqJC3UDRfKAFeO0hrijV1crqZXpyX217qwzR0KDxook/SG3i5jLdO/zuZ68UgQNDloYRMiFdB5XpcyQoccEfRdCzHDqKOzIwus2STQW3FY1Q69KtiuV/SBnDGxLlJtChPCA8k270undXWXq3F1Rl1EZVlNwmJwR9X4WK6vFqn84hWNdKsdcHtK4PpVJPZpMenL5NbfCR55hGUYtwQoWAiafYZWDRvcFAs92i/Zeqv8DpSA+ivj+KtIiRIzf/mDg0Ump2vjgFK7Yfkqw+uacOPwsLNH2WcTmedg/l2ZDIWOyXHQJNIZHb+Xqb1sbEIShMG257V5JyUZ3cA87Gyegam1WCZoAkWSEDrbQmfO1BYsO3Y6RxGVkfjT1ljG0hgmtKo+5zSXozKVgLPByQd+gkCZd2Ozsz+8093WaQdE/UR4+Y/7XxbvoxuBmdJXyngqO2EQxNx2ixWhXeMY="

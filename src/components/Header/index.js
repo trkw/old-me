@@ -1,8 +1,7 @@
 import React, { PropTypes } from "react"
-import { Link } from "react-router"
+import { Link } from "phenomic"
 import Svg from "react-svg-inline"
 
-import profileSvg from "../icons/iconmonstr-profile-1.svg"
 import twitterSvg from "../icons/iconmonstr-twitter-1.svg"
 import gitHubSvg from "../icons/iconmonstr-github-1.svg"
 
@@ -13,31 +12,13 @@ const Header = (props, { metadata: { pkg } }) => (
     <nav className={ styles.nav }>
       <div className={ styles.navPart1 }>
         <Link
-          className={
-            styles.siteLogo
-          }
-          to="/"
+          className={ styles.link }
+          to={ "/" }
         >
-          <span className={ styles.siteLogoTitle }>
-            { "trkw" }
-          </span>
-          <br />
-          <span className={ styles.siteLogoDescription }>
-            { "Front-end engineer" }
-          </span>
+          { "Home" }
         </Link>
       </div>
       <div className={ styles.navPart2 }>
-        {
-          pkg.twitter &&
-          <a
-            href={ `https://twitter.com/${pkg.twitter}` }
-            className={ styles.link }
-          >
-            <Svg svg={ profileSvg } cleanup />
-            { "Profile" }
-          </a>
-        }
         {
           pkg.twitter &&
           <a

@@ -1,3 +1,5 @@
+@import "https://fonts.googleapis.com/earlyaccess/mplus1p.css";
+
 /* Using global sytles is not recommended, prefer local styles via CSS Modules */
 
 /*
@@ -27,17 +29,16 @@ body {
  */
 html {
   min-height: 100%;
-  background-color: #222;
-  color: #aaa;
+  background: color(var(--colorPrimary) l(99%));
 }
 
 body {
-  font-size: 0.833rem;
+  color: var(--colorText);
+  font-size: 1rem;
   line-height: 1.5rem;
 
   /* system font https://medium.com/designing-medium/system-shock-6b1dc6d6596f */
-  -webkit-font-smoothing: antialiased;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
 /*
@@ -73,18 +74,20 @@ body {
   }
 }
 
-.phenomic-BodyContainer {
-  word-break: break-all;
-}
-
 /* minimal styling, prefer removing this and use local styles */
 a {
-  line-height: 1;
-  color: #fff;
+  color: inherit;
   text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
-/* handy for content */
-img {
-  max-width: 100%;
+hr {
+  border: 0;
+  height: 1px;
+  background: var(--colorNeutral);
+  opacity: 0.2;
+  margin: 2rem 0;
 }
