@@ -1,0 +1,4 @@
+{
+  "processors": ["stylelint-processor-glamorous"],
+  "extends": "stylelint-config-standard"
+}
