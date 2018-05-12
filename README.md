@@ -1,6 +1,6 @@
 ![gatsby-starter-procyon](https://github.com/danielmahon/gatsby-starter-procyon/raw/master/src/images/logo.png)
 
-# gatsby-starter-procyon
+# trkw
 
 An opinionated Gatsby starter designed for trash-eating pandas.
 
